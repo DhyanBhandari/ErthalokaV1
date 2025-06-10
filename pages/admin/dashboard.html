@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-800 text-white font-sans">
+  <div class="flex min-h-screen">
+    <aside class="w-64 bg-gray-900 p-6 space-y-4 fixed inset-y-0">
+      <h2 class="text-xl font-bold mb-6">Admin Panel</h2>
+      <nav class="space-y-2">
+        <a href="#products" class="block hover:text-green-400">Products</a>
+        <a href="#events" class="block hover:text-green-400">Events</a>
+        <a href="#coins" class="block hover:text-green-400">Coin Management</a>
+        <a href="#upi" class="block hover:text-green-400">UPI Verification</a>
+      </nav>
+    </aside>
+
+    <main class="flex-1 ml-64 p-6 space-y-10">
+      <!-- Products Section -->
+      <section id="products" class="space-y-4">
+        <h3 class="text-2xl font-semibold">Products</h3>
+        <form id="addProductForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-700 p-4 rounded">
+          <input type="text" placeholder="Name" id="productName" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="text" placeholder="Description" id="productDesc" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="number" placeholder="Price" id="productPrice" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="text" placeholder="Image URL" id="productImage" class="p-2 bg-gray-800 border border-gray-700 rounded">
+          <input type="number" placeholder="Carbon Coin Reward" id="productReward" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <button type="submit" class="bg-green-600 hover:bg-green-700 p-2 rounded text-white">Add Product</button>
+        </form>
+        <table class="min-w-full bg-gray-700 rounded">
+          <thead>
+            <tr>
+              <th class="p-2 text-left">Name</th>
+              <th class="p-2 text-left">Price</th>
+              <th class="p-2 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTable"></tbody>
+        </table>
+      </section>
+
+      <!-- Events Section -->
+      <section id="events" class="space-y-4">
+        <h3 class="text-2xl font-semibold">Events</h3>
+        <form id="addEventForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-gray-700 p-4 rounded">
+          <input type="text" placeholder="Name" id="eventName" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="date" id="eventDate" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="time" id="eventTime" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="text" placeholder="Description" id="eventDesc" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="text" placeholder="Location" id="eventLocation" class="p-2 bg-gray-800 border border-gray-700 rounded" required>
+          <input type="url" placeholder="Registration Link" id="eventLink" class="p-2 bg-gray-800 border border-gray-700 rounded">
+          <button type="submit" class="bg-green-600 hover:bg-green-700 p-2 rounded text-white">Add Event</button>
+        </form>
+        <table class="min-w-full bg-gray-700 rounded">
+          <thead>
+            <tr>
+              <th class="p-2 text-left">Name</th>
+              <th class="p-2 text-left">Date</th>
+              <th class="p-2 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="eventsTable"></tbody>
+        </table>
+      </section>
+
+      <!-- Coin Management Section -->
+      <section id="coins" class="space-y-4">
+        <h3 class="text-2xl font-semibold">Coin Management</h3>
+        <div class="bg-gray-700 p-4 rounded space-y-4">
+          <input type="text" id="userSearch" placeholder="Search user by email" class="p-2 bg-gray-800 border border-gray-700 rounded w-full">
+          <div id="userInfo" class="space-y-2"></div>
+          <div class="flex space-x-2">
+            <input type="number" id="coinAmount" placeholder="Amount" class="p-2 bg-gray-800 border border-gray-700 rounded flex-1">
+            <button id="addCoins" class="bg-green-600 hover:bg-green-700 p-2 rounded">Add</button>
+            <button id="removeCoins" class="bg-red-600 hover:bg-red-700 p-2 rounded">Remove</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- UPI Verification Section -->
+      <section id="upi" class="space-y-4">
+        <h3 class="text-2xl font-semibold">UPI Verification</h3>
+        <table class="min-w-full bg-gray-700 rounded">
+          <thead>
+            <tr>
+              <th class="p-2 text-left">User</th>
+              <th class="p-2 text-left">UTR</th>
+              <th class="p-2 text-left">Plan</th>
+              <th class="p-2 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="upiTable"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="../../admin.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
