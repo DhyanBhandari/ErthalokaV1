@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribe - Erthaloka</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.16/framer-motion.umd.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+</head>
+<body class="bg-black text-white font-sans">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-center mb-8">Choose Your Plan</h1>
+    <div class="grid md:grid-cols-3 gap-8" id="planGrid">
+      <!-- Plan cards inserted by JS -->
+    </div>
+    <div id="paymentStep" class="hidden mt-10">
+      <h2 class="text-xl font-semibold mb-4">Choose Payment Method</h2>
+      <div class="flex flex-col gap-6">
+        <button id="payRazorpay" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-48">Pay with Razorpay</button>
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 max-w-md">
+          <h3 class="text-lg font-semibold mb-2">Free UPI</h3>
+          <p class="mb-2">Pay <span id="upiAmount"></span> to UPI ID <strong>erthaloka@upi</strong></p>
+          <img src="assets/images/upi_qr.png" alt="UPI QR" class="w-40 mb-2">
+          <input type="text" id="utrInput" placeholder="Enter UPI Transaction ID" class="w-full p-2 text-black mb-2">
+          <button id="submitUtr" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full">Submit UTR for Verification</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="subscribe.js"></script>
+</body>
+</html>

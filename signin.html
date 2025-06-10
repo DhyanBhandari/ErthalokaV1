@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In - Erthaloka</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="firebase.js"></script>
+</head>
+<body class="bg-black text-white font-sans flex items-center justify-center h-screen">
+  <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 max-w-sm w-full">
+    <h1 class="text-2xl font-bold mb-4">Sign In</h1>
+    <input id="email" type="email" placeholder="Email" class="w-full p-2 mb-2 text-black">
+    <input id="password" type="password" placeholder="Password" class="w-full p-2 mb-4 text-black">
+    <button id="signInBtn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full mb-2">Sign In</button>
+    <button id="googleBtn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded w-full">Google Sign-In</button>
+  </div>
+  <script>
+    document.getElementById('signInBtn').addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
+        window.location.href = 'profile.html';
+      }).catch(err => alert(err.message));
+    });
+    document.getElementById('googleBtn').addEventListener('click', () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider).then(() => {
+        window.location.href = 'profile.html';
+      }).catch(err => alert(err.message));
+    });
+  </script>
+</body>
+</html>

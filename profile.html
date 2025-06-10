@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Profile - Erthaloka</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+</head>
+<body class="bg-black text-white font-sans">
+  <div class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold mb-6">Profile</h1>
+    <p>Email: <span id="email"></span></p>
+    <p>Membership Tier: <span id="tier"></span></p>
+    <p>Subscription Start: <span id="start"></span></p>
+    <h2 class="text-2xl font-semibold mt-6 mb-2">Access</h2>
+    <ul id="accessList" class="list-disc pl-6"></ul>
+  </div>
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      if(!user){
+        window.location.href = 'signin.html';
+        return;
+      }
+      document.getElementById('email').textContent = user.email;
+      firebase.firestore().collection('users').doc(user.uid).get().then(doc => {
+        const data = doc.data() || {};
+        document.getElementById('tier').textContent = data.role || 'Warrior';
+        document.getElementById('start').textContent = data.subscriptionStartDate ? data.subscriptionStartDate.toDate().toDateString() : 'N/A';
+        const access = data.access || {};
+        const list = document.getElementById('accessList');
+        list.innerHTML = '';
+        Object.entries(access).forEach(([k,v])=>{
+          const li = document.createElement('li');
+          li.textContent = `${k}: ${v ? 'Yes' : 'No'}`;
+          list.appendChild(li);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
