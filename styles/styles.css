@@ -618,3 +618,7 @@ body, html {
                       from { opacity: 0; transform: translateY(10px); }
                       to { opacity: 1; transform: translateY(0); }
                     }
+.wallet-card{background-color:#1f2937;padding:1rem;border-radius:0.5rem;box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+.wallet-balance{font-size:1.875rem;font-weight:700;color:#facc15;transition:box-shadow 0.3s ease;}
+.wallet-balance.glow{box-shadow:0 0 8px #facc15;}
+
