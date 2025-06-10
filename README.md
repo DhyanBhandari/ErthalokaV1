@@ -24,3 +24,45 @@ A simple Firebase based wallet system is provided.
    - `simulateProductPurchase(uid, productId, coins)` demonstrates rewarding coins after a purchase.
 
 For manual UPI verification (Phase 3), an admin can call the same `addTransaction` function with type `manual_upi_reward_verification` once the UTR is confirmed.
+
+## Next.js Application
+
+The `erthaloka-next` folder contains a more complete Next.js implementation.
+To run it locally you need [Node.js](https://nodejs.org) installed (version 18
+or newer).
+
+1. Open a terminal and navigate into the project:
+
+   ```bash
+   cd erthaloka-next
+   ```
+
+2. Install dependencies with your preferred package manager:
+
+   ```bash
+   npm install
+   # or
+   pnpm install
+   ```
+
+3. Create a `.env.local` file inside `erthaloka-next` with your Firebase
+   configuration:
+
+   ```text
+   NEXT_PUBLIC_FIREBASE_API_KEY=your_key
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+   NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   The site will be available at <http://localhost:3000>.
+
+5. For a production build run `npm run build` followed by `npm start`.
