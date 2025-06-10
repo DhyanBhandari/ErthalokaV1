@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErthaLoka</title>
+    <meta name="description" content="ErthaLoka - Where People, Planet & Purpose Thrive. Join our sustainable living community, eco-hostels, and nature events.">
+    <link rel="icon" href="assets\images\favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets\images\web logo.png" type="image/png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+<!-- Poppins Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<!-- Animate.css -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    
+    <!-- Lottie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.min.js"></script>
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Custom Styles -->
+    
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="bg-dark-green text-white parallax" id="body">
+  
+   <!-- Navigation -->
+  <!-- Navbar -->
+<nav id="mainNav" class="fixed top-0 w-full z-50 bg-white shadow-md transition-all duration-300 font-outfit">
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <a href="#home" class="group flex items-center space-x-2">
+        <img src="assets/images/logo3.png" alt="Erthaloka Logo" class="w-30 h-11 group-hover:animate__animated group-hover:animate__pulse">
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden focus:outline-none">
+        <svg class="w-8 h-8 text-green-600 transition-transform duration-300 hover:scale-110" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-16 6h16"/>
+        </svg>
+      </button>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 text-md font-medium">
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+        <a href="#innovation" class="nav-link">Innovation</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-black text-white px-6 pt-4 pb-6 space-y-4 shadow-md max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+    <a href="#about" class="mobile-link">About Us</a>
+    <a href="#ecosystem" class="mobile-link">Ecosystem</a>
+    <a href="#innovation" class="mobile-link">Innovation</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+</nav>
+
+<!-- Hover Animation Styling -->
+<style>
+  .nav-link {
+    position: relative;
+    color: #4b5563;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #16a34a;
+    transition: width 0.4s ease;
+  }
+
+  .nav-link:hover {
+    color: #16a34a;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .mobile-link {
+    display: block;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    color: #4b5563;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .mobile-link:hover {
+    color: #16a34a;
+    transform: translateX(6px);
+  }
+</style>
+
+<!-- JS for mobile toggle -->
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    if (mobileMenu.style.maxHeight === '0px' || !mobileMenu.style.maxHeight) {
+      mobileMenu.style.maxHeight = '400px';
+    } else {
+      mobileMenu.style.maxHeight = '0px';
+    }
+  });
+
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.style.maxHeight = '0px';
+    });
+  });
+</script>
+
+<!-- Animate.css (for image hover pulse) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+<!-- Hero Section with Parallax -->
+
+<section id="home" class="relative w-full h-screen">
+  <div class="absolute inset-0 z-0">
+    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+      <source src="assets/videos/hero-background.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="absolute inset-0 z-10 bg-black bg-opacity-0 flex items-center justify-center text-center">
+    <div class="container mx-auto px-4 flex flex-col items-center justify-center h-full">
+      <div id="heroLottie" class="w-32 h-32 mb-8"></div>
+      <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+        A Co-ExIStic Universe<br>
+        Where People, Planet & Purpose Thrive
+      </h1>
+      <p class="text-lg md:text-2xl text-white mb-8">
+        Collaborative | Experimental | Innovative<br>
+        Self-Sustainable | Holistic
+      </p>
+      <button onclick="window.location.href='https://chat.whatsapp.com/LUlrfRH2c17A2PmHAUaajl'" class="bg-green-600 text-white px-8 py-3 rounded-full hover:bg-green-700 transition">
+        Join the Movement
+      </button>
+    </div>
+  </div>
+</section>
+</div>
+
+
+
+<!-- 
+<section id="about" class="py-20 font-[Poppins]">
+  <div class="container mx-auto px-6">
+
+    <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between">
+      <h2 class="text-4xl font-bold text-white" style="line-height: 1.2;">
+        Our Story
+      </h2>
+      
+    </div>
+
+    
+    <div class="flex flex-col md:flex-row items-stretch gap-6">
+      
+
+      <div class="md:w-1/2 bg-black p-6 rounded-lg flex flex-col justify-center animate__animated" id="aboutText">
+        <p class="text-2xl text-green-300 mb-6 text-justify leading-relaxed">
+          In a world where sustainability is no longer enough, <span class="font-semibold">ErthaLoka</span> emerges as a regenerative ecosystem . a universe that goes beyond sustaining life to thriving in harmony with nature.
+        </p>
+        <p class="text-2xl text-green-300 text-justify leading-relaxed">
+          It is a living system where technology, nature, and communities merge to create self-sufficient, purpose-driven habitats. From sustainable villages to circular economies, from regenerative agriculture to lifelong learning spaces, every aspect of <span class="font-semibold">ErthaLoka</span> is designed to create lasting impact.
+        </p>
+        <p class="text-2xl text-green-300 text-justify mt-4 leading-relaxed">
+          This is not just a vision; it is a movement. A new way of life where people don’t just survive, but thrive together.
+        </p>
+      </div>
+
+      
+      <div class="md:w-1/2 rounded-lg overflow-hidden animate__animated" id="aboutImage">
+        <img src="assets/images/about-us.jpg" alt="About Us Image" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from("#aboutText", {
+      scrollTrigger: "#aboutText",
+      opacity: 0,
+      x: -50,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    gsap.from("#aboutImage", {
+      scrollTrigger: "#aboutImage",
+      opacity: 0,
+      x: 50,
+      duration: 1,
+      ease: "power2.out"
+    });
+  });
+</script>
+
+About Us Section -->
+
+<!--
+
+<section class="py-16 text-center bg-transparent">
+  <div class="container max-w-4xl min-h-[500px] px-4 bg-white/50 backdrop-blur-md rounded-xl shadow-xl py-12">
+    <h2 class="text-4xl font-bold text-black mb-12">IMPACT.</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+    
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">10 Lakh</div>
+        <p class="text-lg font-bold text-black">Beneficiaries</p>
+      </div>
+
+   
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">5</div>
+        <p class="text-lg font-bold text-black">Ecovillages</p>
+      </div>
+
+      
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">15+</div>
+        <p class="text-lg font-bold text-black">Events</p>
+      </div>
+
+ 
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">200+</div>
+        <p class="text-lg font-bold text-black">Veeraru</p>
+      </div>
+
+     
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">1 lakh</div>
+        <p class="text-lg font-bold text-black">Volunteers engaged</p>
+      </div>
+
+      
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">500+</div>
+        <p class="text-lg font-bold text-black">Activities</p>
+      </div>
+
+     
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">700+</div>
+        <p class="text-lg font-bold text-black">Tonnes of waste diverted</p>
+      </div>
+
+      
+      <div class="flex flex-col items-center">
+        <div class="bg-black text-green-500 w-32 h-32 rounded-full flex items-center justify-center text-3xl font-bold mb-4 shadow-lg">10</div>
+        <p class="text-lg font-bold text-black">Years</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+============================
+END OF IMPACT SECTION
+============================
+-->
+
+
+
+
+
+
+
+ <!-- what we do Section -->
+       
+    </div>
+</section>
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- Animate.css for entry effects -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<section class="py-20  text-white">
+  <div class="container mx-auto px-6 max-w-7xl text-center">
+    <h2 class="text-5xl font-extrabold mb-6 text-green-400 animate__animated animate__fadeInDown">
+      🌍 What We Do
+    </h2>
+    <p class="text-lg text-gray-300 mb-12 max-w-3xl mx-auto animate__animated animate__fadeInUp">
+      At <strong>ErthaLoka</strong>, we unite <span class="text-green-400 font-semibold">Planet</span>, <span class="text-green-400 font-semibold">People</span>, and <span class="text-green-400 font-semibold">Purpose</span> — crafting regenerative ecosystems that are as intelligent as they are inspiring.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <!-- 🌱 Planet Card -->
+      <a href="/erthagrama" class="group transform transition hover:scale-105 animate__animated animate__fadeInLeft">
+        <div class="h-full bg-black/70 backdrop-blur-md border border-green-900 rounded-xl p-6 shadow-lg hover:shadow-green-500/30 flex flex-col justify-between">
+          <div class="flex justify-center mb-4">
+            <div class="w-16 h-16 bg-green-950 rounded-full flex items-center justify-center">
+              <i data-lucide="leaf" class="w-8 h-8 stroke-green-400"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-green-400 mb-2 group-hover:underline">🌱 Planet</h3>
+          <p class="text-gray-300 mb-4">Building regenerative environments:</p>
+          <ul class="text-left list-disc list-inside text-gray-200 font-medium space-y-1">
+            <li>ErthaGrama – Eco-habitats & smart villages</li>
+            <li>Experience Centre – Nature-based co-living</li>
+          </ul>
+        </div>
+      </a>
+
+      <!-- 👥 People Card -->
+      <a href="/erthabazaar" class="group transform transition hover:scale-105 animate__animated animate__fadeInUp">
+        <div class="h-full bg-black/70 backdrop-blur-md border border-green-900 rounded-xl p-6 shadow-lg hover:shadow-green-500/30 flex flex-col justify-between">
+          <div class="flex justify-center mb-4">
+            <div class="w-16 h-16 bg-green-950 rounded-full flex items-center justify-center">
+              <i data-lucide="users" class="w-8 h-8 stroke-green-400"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-green-400 mb-2 group-hover:underline">👥 People</h3>
+          <p class="text-gray-300 mb-4">Empowering regenerative communities:</p>
+          <ul class="text-left list-disc list-inside text-gray-200 font-medium space-y-1">
+            <li>ErthaCANnect – Local & global networks</li>
+            <li>ErthaMART – Ethical product platform</li>
+            <li>ErthaVani – Stories, blogs, livestreams</li>
+          </ul>
+        </div>
+      </a>
+
+      <!-- 🎯 Purpose Card -->
+      <a href="/erthakriya" class="group transform transition hover:scale-105 animate__animated animate__fadeInRight">
+        <div class="h-full bg-black/70 backdrop-blur-md border border-green-900 rounded-xl p-6 shadow-lg hover:shadow-green-500/30 flex flex-col justify-between">
+          <div class="flex justify-center mb-4">
+            <div class="w-16 h-16 bg-green-950 rounded-full flex items-center justify-center">
+              <i data-lucide="target" class="w-8 h-8 stroke-green-400"></i>
+            </div>
+          </div>
+          <h3 class="text-2xl font-bold text-green-400 mb-2 group-hover:underline">🎯 Purpose</h3>
+          <p class="text-gray-300 mb-4">Tech-aligned mission for good:</p>
+          <ul class="text-left list-disc list-inside text-gray-200 font-medium space-y-1">
+            <li>Co-ExIStic Living – Purpose-driven innovation</li>
+            <li>Data + AI – Measuring regeneration</li>
+            <li>Global-local scaling models</li>
+          </ul>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  lucide.createIcons();
+</script>
+
+
+    <!-- Ecosystem Section -->
+    
+
+
+    <section id="ecosystem" class="py-20  text-white font-[Poppins]">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center mb-16">
+      The ErthaLoka Ecosystem
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      
+      <!-- ErthaGrama - Earthy Green -->
+      <a href="/pages/erthagrama.html" class="transform transition duration-500 hover:scale-105 group">
+        <div class="bg-gradient-to-br from-[#1a3c1a] to-[#0d2f0d] group-hover:from-green-600 group-hover:to-lime-500 p-4 rounded-2xl shadow-2xl hover:shadow-green-400/30 transition duration-500">
+          <img src="assets/images/Erthagrama.png" alt="ErthaGrama" class="w-full h-48 object-cover rounded-xl mb-4">
+          <h3 class="text-xl font-bold text-white text-center">🌿 ErthaGrama : The Living Ecosystem</h3>
+        </div>
+      </a>
+
+      <!-- ErthaCANnect - Blue for Global Connection -->
+      <a href="/pages/erthacannect.html" class="transform transition duration-500 hover:scale-105 group">
+        <div class="bg-gradient-to-br from-[#14344a] to-[#0b2434] group-hover:from-blue-600 group-hover:to-cyan-400 p-4 rounded-2xl shadow-2xl hover:shadow-blue-300/30 transition duration-500">
+          <img src="assets/images/ErthaCANnect.png" alt="ErthaKoota" class="w-full h-48 object-cover rounded-xl mb-4">
+          <h3 class="text-xl font-bold text-white text-center">🌍 ErthaCANnect : The Global Network</h3>
+        </div>
+      </a>
+
+      <!-- ErthaGyana 
+      <a href="/pages/erthagyana.html" class="transform transition duration-500 hover:scale-105 group">
+        <div class="bg-gradient-to-br from-[#544800] to-[#3e3600] group-hover:from-yellow-500 group-hover:to-amber-300 p-4 rounded-2xl shadow-2xl hover:shadow-yellow-300/30 transition duration-500">
+          <img src="assets/images/Erthagyana.png" alt="ErthaGyana" class="w-full h-48 object-cover rounded-xl mb-4">
+          <h3 class="text-xl font-bold text-white text-center">📚 ErthaGyana : Knowledge Sharing</h3>
+        </div>
+      </a>
+      - Knowledge Yellow -->
+
+      <!-- ErthaBazaar - Eco Market Mint/Teal -->
+      <a href="/pages/erthabazaar.html" class="transform transition duration-500 hover:scale-105 group">
+        <div class="bg-gradient-to-br from-[#004d40] to-[#00251a] group-hover:from-teal-500 group-hover:to-green-300 p-4 rounded-2xl shadow-2xl hover:shadow-teal-300/30 transition duration-500">
+          <img src="assets/images/people.jpg" alt="ErthaBazaar" class="w-full h-48 object-cover rounded-xl mb-4">
+          <h3 class="text-xl font-bold text-white text-center">🛒 ErthaMart : Marketplace of the Future</h3>
+        </div>
+      </a>
+
+      <!-- ErthaKriya 
+      <a href="/pages/erthacannect.html" class="transform transition duration-500 hover:scale-105 group">
+        <div class="bg-gradient-to-br from-[#4a2a00] to-[#331e00] group-hover:from-orange-500 group-hover:to-yellow-400 p-4 rounded-2xl shadow-2xl hover:shadow-orange-300/30 transition duration-500">
+          <img src="assets/images/ErthaKriya.png" alt="ErthaKriya" class="w-full h-48 object-cover rounded-xl mb-4">
+          <h3 class="text-xl font-bold text-white text-center">🔧 ErthaKriya : Empowering Action</h3>
+        </div>
+      </a>
+      - Action/Empowerment Orange -->
+      <!-- Sustainable Circle - Action/Empowerment Orange -->
+      <a href="/pages/sustainablecircle.html" class="transform transition duration-500 hover:scale-105 group">
+        <div class="bg-gradient-to-br from-[#4a2a00] to-[#331e00] group-hover:from-orange-500 group-hover:to-yellow-400 p-4 rounded-2xl shadow-2xl hover:shadow-orange-300/30 transition duration-500">
+          <img src="assets/images/SustainableCircle.png" alt="ErthaKriya" class="w-full h-48 object-cover rounded-xl mb-4">
+          <h3 class="text-xl font-bold text-white text-center">🔧 Sustainable Circle : EVents</h3>
+        </div>
+      </a>
+      <!-- ErthaVaani 
+      <a href="/pages/ErthaVani.html" class="transform transition duration-500 hover:scale-105 group">
+        <div class="bg-gradient-to-br from-[#4a2a00] to-[#331e00] group-hover:from-orange-500 group-hover:to-yellow-400 p-4 rounded-2xl shadow-2xl hover:shadow-orange-300/30 transition duration-500">
+          <img src="assets/images/ErthaVani.png" alt="ErthaKriya" class="w-full h-48 object-cover rounded-xl mb-4">
+          <h3 class="text-xl font-bold text-white text-center">🔧 ErthaVani : Communications </h3>
+        </div>
+      </a>
+          - Action/Empowerment Orange -->
+    </div>
+  </div>
+</section>
+
+
+<!-- Required Scripts for Font Awesome and Animate.css -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+
+<!-- Booking Modal -->
+<div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:max-w-lg sm:w-full">
+        <div class="px-4 py-5 sm:p-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">Book Your Tickets</h3>
+            <div class="mt-2">
+                <form id="bookingForm">
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                        <input type="text" id="phone" name="phone" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
+                        <input type="date" id="date" name="date" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="button" onclick="closeBookingModal()" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-all duration-300 mr-2">Cancel</button>
+                        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-all duration-300">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Community Section -->
+
+   <!-- Lucide Icons & Animate.css (Include in <head>) -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<!-- 🚀 Highlight Event Section -->
+<section id="highlight-event" class="py-20  text-white text-center">
+  <div class="container mx-auto px-6 max-w-5xl">
+    
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
+      🚀 Upcoming Highlight: Puducherry Edition 02
+    </h2>
+    
+    <p class="text-gray-300 text-lg mb-10 max-w-3xl mx-auto animate__animated animate__fadeInUp">
+      A visionary gathering of sustainable startups, designers, thinkers and doers — co-creating the future.
+    </p>
+
+    <!-- Event Card -->
+    <div class="bg-black/70 border border-green-800 p-8 rounded-xl shadow-lg backdrop-blur-md mx-auto animate__animated animate__fadeInUp hover:scale-105 transition">
+      <h3 class="text-2xl font-bold text-green-400 mb-3 flex items-center justify-center gap-2">
+        <i data-lucide="map-pin" class="w-6 h-6 text-green-400"></i> Puducherry - Eco-Innovation Summit
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left text-gray-300 text-md">
+        <p class="flex items-center gap-2">
+          <i data-lucide="calendar" class="w-5 h-5 text-green-400"></i> 07 June 2025
+        </p>
+        <p class="flex items-center gap-2">
+          <i data-lucide="clock" class="w-5 h-5 text-green-400"></i> 10 AM – 2 PM
+        </p>
+        <p class="flex items-center gap-2">
+          <i data-lucide="map" class="w-5 h-5 text-green-400"></i> ErthaLoka, Puducherry
+        </p>
+        <p class="flex items-center gap-2">
+          <i data-lucide="users" class="w-5 h-5 text-green-400"></i> Eco-innovators, Change Leaders
+        </p>
+      </div>
+
+      <!-- CTA Button -->
+     <a href="https://forms.gle/9aFvnuY1rozXjc1VA" target="_blank" rel="noopener noreferrer">
+  <button class="mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-md flex items-center justify-center gap-2 mx-auto transition-all">
+    <i data-lucide="ticket" class="w-5 h-5"></i> Book Your Spot
+  </button>
+</a>
+
+
+    <!-- View Past Events Button -->
+    <div class="mt-12 animate__animated animate__fadeInUp">
+      <a href="/erthakriya.html" class="inline-block bg-white text-green-800 px-6 py-3 rounded-full font-semibold hover:bg-green-100 transition-all">
+        🎟️ View Past Events
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  lucide.createIcons();
+</script>
+
+
+    <!-- Innovation Section -->
+
+
+<section id="innovation" class="py-16  text-white font-outfit">
+  <div class="mx-auto px-6 max-w-5xl rounded-3xl bg-green-900/20 border border-green-400/30 backdrop-blur-xl shadow-2xl p-10">
+
+    <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-14 animate__animated animate__fadeInDown">
+      🌿 Sustainable Tech Innovations
+    </h2>
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Card 1 -->
+      <div class="bg-[#14532d]/80 backdrop-blur-md rounded-xl p-6 shadow-xl hover:scale-105 transition duration-500 animate__animated animate__fadeInUp">
+        <div class="flex items-center justify-center mb-4">
+          <i data-lucide="cpu" class="w-10 h-10 text-lime-300 animate-pulse drop-shadow-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white text-center mb-2">Smart Resource Management</h3>
+        <p class="text-sm text-lime-100 text-center">
+          AI + IoT for optimized energy and water use—automated, smart, efficient.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-[#1e40af]/80 backdrop-blur-md rounded-xl p-6 shadow-xl hover:scale-105 transition duration-500 animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="flex items-center justify-center mb-4">
+          <i data-lucide="layers" class="w-10 h-10 text-sky-300 animate-bounce drop-shadow-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white text-center mb-2">Decentralized Governance</h3>
+        <p class="text-sm text-blue-100 text-center">
+          Transparent, blockchain-powered decision-making by the people.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-[#713f12]/80 backdrop-blur-md rounded-xl p-6 shadow-xl hover:scale-105 transition duration-500 animate__animated animate__fadeInUp animate__delay-2s">
+        <div class="flex items-center justify-center mb-4">
+          <i data-lucide="refresh-cw" class="w-10 h-10 text-amber-300 animate-spin-slow drop-shadow-lg"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white text-center mb-2">Circular Economy</h3>
+        <p class="text-sm text-yellow-100 text-center">
+          Closing the loop with upcycling and regenerative product cycles.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Assets -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+<script> lucide.createIcons(); </script>
+
+<style>
+  .font-outfit { font-family: 'Outfit', sans-serif; }
+  .animate-spin-slow {
+    animation: spin 6s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0); }
+    to   { transform: rotate(360deg); }
+  }
+</style>
+
+
+<!-- Required Assets -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+<script> lucide.createIcons(); </script>
+
+<style>
+  .font-outfit { font-family: 'Outfit', sans-serif; }
+  .animate-spin-slow {
+    animation: spin 6s linear infinite;
+  }
+  @keyframes spin {
+    from { transform: rotate(0); }
+    to   { transform: rotate(360deg); }
+  }
+</style>
+
+ 
+<!-- Team Section END -->
+
+
+    <!-- Contact & FAQ Section -->
+    <section id="contact" class="py-20  text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="animate__animated animate__fadeIn animate__delay-1s">
+                    <h2 class="text-4xl font-bold mb-8 text-center mt-2">Get in Touch</h2>
+                    <div class="space-y-6">
+                        <p class="flex items-center text-lg animate__animated animate__fadeIn animate__delay-2s">
+                            <span class="mr-4 text-2xl"><i class="fas fa-phone-alt"></i></span>
+                            <a href="tel:+917829778299" class="text-white hover:text-blue-400">+91 78297 78299</a>
+                        </p>
+                        <p class="flex items-center text-lg animate__animated animate__fadeIn animate__delay-2.5s">
+                            <span class="mr-4 text-2xl"><i class="fas fa-envelope"></i></span>
+                            <a href="mailto:connect@erthaloka.com" class="text-white hover:text-blue-400">connect@erthaloka.com</a>
+                        </p>
+                        <p class="flex items-center text-lg animate__animated animate__fadeIn animate__delay-3s">
+                            <span class="mr-4 text-2xl"><i class="fas fa-map-marker-alt"></i></span>
+                            <span>MDR 1115, Kaatu Meetu Vidhi, Kuilapalyam, Near Auroville, Tamilnadu - 605101</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="ertha-contact-container animate__animated animate__fadeIn animate__delay-1.5s">
+                    <h3 class="text-4xl font-bold mb-6 mt-0">Send us a Message</h3>
+                    <form action="mailto:connect@erthaloka.com" method="POST" enctype="text/plain" class="space-y-6">
+                        <!-- Name Field -->
+                        <div class="ertha-field-group">
+                            <label for="ertha-name" class="ertha-label">Your Name <span class="ertha-required">*</span></label>
+                            <div class="ertha-input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ertha-icon" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                </svg>
+                                <input type="text" id="ertha-name" name="name" class="ertha-input" placeholder="Enter your name" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Field -->
+                        <div class="ertha-field-group">
+                            <label for="ertha-email" class="ertha-label">Your Email <span class="ertha-required">*</span></label>
+                            <div class="ertha-input-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ertha-icon" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                </svg>
+                                <input type="email" id="ertha-email" name="email" class="ertha-input" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Message Field -->
+                        <div class="ertha-field-group">
+                            <label for="ertha-message" class="ertha-label">Your Message <span class="ertha-required">*</span></label>
+                            <div class="ertha-input-wrapper">
+                                <textarea id="ertha-message" name="message" class="ertha-textarea" placeholder="Enter your message" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="ertha-button-container">
+                            <button type="submit" class="ertha-submit-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="ertha-button-icon" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                                </svg>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+                  
+                  
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">ErthaLoka</h3>
+                    <p class="text-gray-400">
+                        A Universe Beyond Sustainability
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#ecosystem" class="text-gray-400 hover:text-white">Ecosystem</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Social Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <form id="newsletterForm" class="space-y-4">
+                        <input 
+                            type="email" 
+                            id="emailInput"
+                            placeholder="Enter your email" 
+                            class="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border-none focus:ring-2 focus:ring-green-500"
+                            required
+                        >
+                        <button 
+                            type="submit"
+                            class="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                        >
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 ErthaLoka. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>

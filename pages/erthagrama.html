@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ErthaGrama Living Spaces</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gradient-to-b from-green-600 to-black text-white font-sans">
+
+<!-- Modal -->
+<div id="spaceModal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden items-center justify-center">
+  <div class="bg-black max-w-3xl w-full rounded-xl p-6 relative">
+    <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-600 hover:text-red-600">✖</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Living Spaces Section -->
+<section id="living-spaces" class="py-20">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-white">🏡 Our Living Spaces</h2>
+    <p class="text-center max-w-3xl mx-auto text-lg text-white mb-10">
+      Welcome to the ErthaGrama living spaces—designed for those who seek to live regeneratively.
+    </p>
+
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Bengaluru Card -->
+      <div onclick="openModal('bengaluru')" class="cursor-pointer bg-black p-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+        <img src="../assets/images/bengaluru1.jpeg" class="rounded-lg w-full h-48 object-cover mb-4">
+        <h3 class="text-xl font-bold text-white">🌆 Bengaluru</h3>
+        <p class="text-sm text-gray-600">Eco-living pod in the city for urban innovators.</p>
+      </div>
+
+      <!-- Auroville Card -->
+      <div onclick="openModal('auroville')" class="cursor-pointer bg-black p-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+        <img src="https://via.placeholder.com/400x250?text=Auroville" class="rounded-lg w-full h-48 object-cover mb-4">
+        <h3 class="text-xl font-bold text-green-700">🌿 Near Auroville</h3>
+        <p class="text-sm text-gray-600">A regenerative space for creators and seekers.</p>
+      </div>
+
+      <!-- Puducherry Card -->
+      <div onclick="openModal('puducherry')" class="cursor-pointer bg-black p-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300">
+        <img src="https://via.placeholder.com/400x250?text=Puducherry" class="rounded-lg w-full h-48 object-cover mb-4">
+        <h3 class="text-xl font-bold text-green-700">🏖️ Puducherry</h3>
+        <p class="text-sm text-gray-600">Beachside co-living and innovation lab.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Script -->
+<script>
+  function openModal(location) {
+    const modal = document.getElementById('spaceModal');
+    const content = document.getElementById('modalContent');
+
+    const details = {
+      bengaluru: {
+        title: "🌆 Bengaluru Living Space",
+        images: [
+          "../assets/images/bengaluru1.jpeg",
+          "../assets/images/bengaluru2.jpeg"
+        ],
+        description: "Urban eco-living pod with a community garden and co-working studio. Ideal for digital nomads and creators. Located in South Bengaluru.",
+        location: "📍 South Bengaluru, Karnataka"
+      },
+      auroville: {
+        title: "🌿 Near Auroville Living Space",
+        images: [
+          "https://via.placeholder.com/300x180?text=Auroville+1",
+          "https://via.placeholder.com/300x180?text=Auroville+2"
+        ],
+        description: "Regenerative habitat with clay architecture, food forests, and yoga decks. Suitable for residencies and co-living learning spaces.",
+        location: "📍 Near Auroville, Tamil Nadu"
+      },
+      puducherry: {
+        title: "🏖️ Puducherry Living Space",
+        images: [
+          "https://via.placeholder.com/300x180?text=Puducherry+1",
+          "https://via.placeholder.com/300x180?text=Puducherry+2"
+        ],
+        description: "Beachside creative zone for sustainability projects, co-living, and immersive workshops near Serenity Beach.",
+        location: "📍 Puducherry North, Near Serenity Beach"
+      }
+    };
+
+    const data = details[location];
+    content.innerHTML = `
+      <h2 class="text-2xl font-bold text-white mb-4">${data.title}</h2>
+      <div class="flex gap-4 mb-4">${data.images.map(src => `<img src="${src}" class="w-1/2 rounded-lg">`).join('')}</div>
+      <p class="text-white mb-2">${data.description}</p>
+      <p class="font-semibold text-green-800">${data.location}</p>
+      <div class="mt-4"><a href="/booking" class="underline text-green-600">🔗 Login & Book</a></div>
+    `;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('spaceModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  lucide.createIcons();
+</script>
+</body>
+</html>

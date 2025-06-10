@@ -1,0 +1,620 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.parallax {
+            background-image: url('../assets/bg.png'); /* Updated to match existing file */
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #061d01;
+        }
+        /* #061d01 */
+        ::-webkit-scrollbar-thumb {
+            background: #4CAF50;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #45a049;
+        }
+        
+        /* Navbar transition */
+        .navbar-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Hero video overlay */
+        .video-overlay {
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.5),
+                rgba(0, 0, 0, 0.3)
+            );
+        }
+        
+        /* 3D icon container */
+        .threejs-container {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+          /* Navbar background and text color */
+    #mainNav {
+               background-color: black; /* Dark green background  */
+            }
+    #mainNav a {
+        color: white; /* White text color */
+    }
+    #body {
+        font-family: 'Poppins', sans-serif;
+        color: black;
+    
+    }
+    .about-us {
+        
+        align-content: center;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 2s ease-in-out;
+    }
+    
+
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes text-scale {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes hover-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes rotate-card {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-in-out;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card {
+  @apply rounded-lg shadow-xl border-4 transform hover:scale-110 hover:rotate-3 hover:shadow-2xl transition-all duration-500 ease-in-out bg-black flex flex-col;
+  transition: all 0.3s ease-in-out;
+}
+
+.card img {
+  @apply w-full h-48 object-cover rounded-lg mb-6;
+}
+
+.card h3 {
+  @apply text-2xl font-bold mb-2 text-[#2e4a21] transition-transform duration-300 ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  animation: rotate-card 0.5s ease-in-out forwards;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  animation: hover-zoom 0.3s ease-in-out forwards;
+}
+
+.card:hover h3 {
+  animation: text-scale 0.3s ease-in-out forwards;
+}
+
+    html, body {
+        scroll-behavior: smooth;
+    }
+    
+    .parallax-container {
+        position: fixed;
+        top: 0;
+        z-index: -1;
+    }
+    
+    .video-overlay {
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+    }
+    
+    .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    
+    .card {
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .card.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .card:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 10px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card:hover .card-bg {
+        opacity: 0.3;
+    }
+    
+    .card:hover .card-icon {
+        transform: translateY(-5px) scale(1.1);
+    }
+    
+    .card-icon {
+        transition: transform 0.3s ease;
+    }
+    
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: 0.8;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    .card:nth-child(1) {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .card:nth-child(2) {
+        animation: float 7s ease-in-out infinite;
+    }
+    
+    .card:nth-child(3) {
+        animation: float 8s ease-in-out infinite;
+    }
+    
+    .card:nth-child(4) {
+        animation: float 9s ease-in-out infinite;
+    }
+    
+    .card::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #ff0066, #6600ff, #00ffcc, #ffcc00);
+        z-index: -1;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .card:hover::before {
+        opacity: 0.5;
+        animation: borderRotate 2s linear infinite;
+    }
+    
+    @keyframes borderRotate {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+
+
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+        animation: spin-slow 8s linear infinite;
+    }
+
+
+
+    :root {
+        --primary-green: #0a2a17;
+        --accent-green: #4ade80;
+        --text-white: #ffffff;
+        --card-bg: #ffffff;
+    }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--primary-green);
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    #erthalokaTeam {
+        padding: 6rem 0;
+        
+    }
+    
+    h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-white);
+        margin-bottom: 3rem;
+        text-align: center;
+        line-height: 1.4;
+    }
+    
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+        .team-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (min-width: 1024px) {
+        .team-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    
+    /* Card Flip Animation */
+    .flip-card {
+        perspective: 1000px;
+        height: 450px;
+        cursor: pointer;
+    }
+    
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+    
+    .flip-card:hover .flip-card-inner, 
+    .flip-card:focus .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 1rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+    }
+    
+    .flip-card-front {
+        background-color: black;
+        z-index: 2;
+        justify-content: center;
+    }
+    
+    .flip-card-back {
+        background-color: black;
+        transform: rotateY(180deg);
+        z-index: 1;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .team-image {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent-green);
+        margin-bottom: 1rem;
+    }
+    
+    .team-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #166534;
+        margin: 0.5rem 0;
+        font-family: Georgia, serif;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .team-role {
+        font-size: 1rem;
+        color:white;
+        margin-bottom: 0.75rem;
+    }
+    
+    .team-bio {
+        font-size: 0.9rem;
+        color: #4b5563;
+        line-height: 1.6;
+    }
+    
+    .flip-instruction {
+        color: #6b7280;
+        font-size: 0.8rem;
+        font-style: italic;
+        margin-top: auto;
+        text-align: center;
+    }
+    
+    .social-links {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+    }
+    
+    .social-links a {
+        background-color: #e5e7eb;
+        color: #4b5563;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+        background-color: var(--accent-green);
+        color: white;
+    }
+    
+    .back-content {
+        padding: 1rem;
+    }
+    
+    .back-title {
+        font-weight: 600;
+        color: #166534;
+        margin-bottom: 0.75rem;
+    }
+    
+    .highlight-text {
+        color: #047857;
+        font-weight: 500;
+    }
+    
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+    
+    .skill-tag {
+        background-color: #ecfdf5;
+        color: #047857;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+    }
+
+
+
+                    /* Isolated styles for Ertha contact form */
+                    .ertha-contact-container {
+                      max-width: 600px;
+                      margin-left: auto;
+                      margin-right: auto;
+                      padding: 1rem;
+                    }
+                    
+                    .ertha-heading {
+                      font-size: 1.875rem;
+                      font-weight: 700;
+                      margin-bottom: 1.5rem;
+                      text-align: center;
+                      color: white;
+                      animation: erthaFadeIn 0.8s ease-out forwards;
+                      animation-delay: 0.5s;
+                      opacity: 0;
+                    }
+                    
+                    .ertha-form {
+                      background-color: #064e3b;
+                      padding: 2rem;
+                      border-radius: 0.5rem;
+                      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                      animation: erthaFadeIn 0.8s ease-out forwards;
+                      animation-delay: 0.8s;
+                      opacity: 0;
+                    }
+                    
+                    .ertha-field-group {
+                      display: flex;
+                      flex-direction: column;
+                      margin-bottom: 1.5rem;
+                    }
+                    
+                    .ertha-label {
+                      font-size: 1.125rem;
+                      font-weight: 600;
+                      margin-bottom: 0.5rem;
+                      color: white;
+                    }
+                    
+                    .ertha-required {
+                      color: #f87171;
+                    }
+                    
+                    .ertha-input-wrapper {
+                      display: flex;
+                      align-items: center;
+                      border: 1px solid #047857;
+                      background-color: #065f46;
+                      border-radius: 0.5rem;
+                      padding: 0 1rem;
+                      transition: all 0.3s ease;
+                    }
+                    
+                    .ertha-input-wrapper:focus-within {
+                      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5);
+                    }
+                    
+                    .ertha-icon {
+                      width: 1.25rem;
+                      height: 1.25rem;
+                      color: #4ade80;
+                      margin-right: 0.75rem;
+                    }
+                    
+                    .ertha-icon-top {
+                      margin-top: 0.5rem;
+                    }
+                    
+                    .ertha-input, .ertha-textarea {
+                      width: 100%;
+                      padding: 0.5rem;
+                      background-color: transparent;
+                      color: white;
+                      border: none;
+                    }
+                    
+                    .ertha-input::placeholder, .ertha-textarea::placeholder {
+                      color: #86efac;
+                    }
+                    
+                    .ertha-input:focus, .ertha-textarea:focus {
+                      outline: none;
+                    }
+                    
+                    .ertha-textarea {
+                      height: 8rem;
+                      resize: vertical;
+                    }
+                    
+                    .ertha-button-container {
+                      margin-top: 1rem;
+                    }
+                    
+                    .ertha-submit-button {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      gap: 0.5rem;
+                      width: 100%;
+                      padding: 0.75rem 0;
+                      background-color: #059669;
+                      color: white;
+                      font-weight: 700;
+                      border-radius: 0.375rem;
+                      border: none;
+                      transition: all 0.3s ease;
+                      cursor: pointer;
+                    }
+                    
+                    .ertha-submit-button:hover {
+                      background-color: #047857;
+                      transform: translateY(-0.25rem);
+                      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                    }
+                    
+                    .ertha-button-icon {
+                      width: 1.25rem;
+                      height: 1.25rem;
+                    }
+                    
+                    /* Animation */
+                    @keyframes erthaFadeIn {
+                      from { opacity: 0; transform: translateY(10px); }
+                      to { opacity: 1; transform: translateY(0); }
+                    }
