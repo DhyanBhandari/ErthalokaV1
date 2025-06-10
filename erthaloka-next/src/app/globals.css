@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  @apply bg-gray-950 text-gray-200 font-sans;
+  background-image: url('https://placehold.co/1920x1080');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+section {
+  @apply bg-gray-900 bg-opacity-80 backdrop-blur-md rounded-xl py-20 px-4 md:px-8;
+}
