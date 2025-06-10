@@ -34,7 +34,7 @@ export default function Hero() {
             Explore our Ecosystem
           </a>
           <a
-            href="#involved"
+            href="/signup"
             className="rounded-full bg-blue-600 hover:scale-105 transition-transform px-6 py-3 text-white font-semibold"
           >
             Join the Movement
