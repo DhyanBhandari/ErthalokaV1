@@ -1,5 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
+import WalletDisplay from './WalletDisplay';
+import { useAuth } from '@/context/AuthContext';
 
 const links = [
   { href: '#what', label: 'What is ErthaLoka?' },
@@ -9,6 +11,7 @@ const links = [
 ];
 
 export default function Navbar() {
+  const { user } = useAuth();
   return (
     <motion.nav
       initial={{ y: -50, opacity: 0 }}
@@ -17,7 +20,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-lg shadow-xl">
       <div className="max-w-6xl mx-auto flex items-center justify-between p-4">
         <a href="#home" className="text-3xl font-extrabold text-white">ErthaLoka</a>
-        <div className="space-x-4 hidden sm:block">
+        <div className="space-x-4 hidden sm:flex items-center">
           {links.map((link) => (
             <a
               key={link.href}
@@ -27,6 +30,7 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          {user && <WalletDisplay />}
         </div>
         <div className="sm:hidden">
           {/* mobile nav could be added later */}
