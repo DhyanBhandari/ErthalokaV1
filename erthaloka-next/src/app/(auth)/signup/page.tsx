@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { auth, app } from '../../firebase/config';
 import Link from 'next/link';
 
 export default function SignUp() {
@@ -9,12 +9,20 @@ export default function SignUp() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  if (!app) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Authentication disabled (missing Firebase config)</p>
+      </div>
+    );
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError((err as Error).message);
     }
   };
 
