@@ -2,6 +2,11 @@
 
 This repository contains the static website for ErthaLoka.
 
+The `erthaloka-next` directory contains a Next.js version of the site. If the
+required Firebase environment variables are not provided the app runs in a demo
+mode where authentication and data features are disabled but the UI still
+loads.
+
 ## Carbon Coin Wallet
 
 A simple Firebase based wallet system is provided.

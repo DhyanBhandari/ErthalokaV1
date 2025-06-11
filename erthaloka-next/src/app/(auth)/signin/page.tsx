@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { auth } from '../../firebase/config';
+import { auth, app } from '../../firebase/config';
 import Link from 'next/link';
 
 export default function SignIn() {
@@ -9,20 +9,28 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  if (!app) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Authentication disabled (missing Firebase config)</p>
+      </div>
+    );
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError((err as Error).message);
     }
   };
 
   const handleGoogle = async () => {
     try {
       await signInWithPopup(auth, new GoogleAuthProvider());
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      setError((err as Error).message);
     }
   };
 
@@ -58,7 +66,7 @@ export default function SignIn() {
           Sign in with Google
         </button>
         <p className="text-center mt-4 text-sm">
-          Don't have an account? <Link className="text-blue-400" href="/signup">Sign up</Link>
+          Don&apos;t have an account? <Link className="text-blue-400" href="/signup">Sign up</Link>
         </p>
       </form>
     </div>

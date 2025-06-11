@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+If the required Firebase environment variables are not configured, the app will
+start in a demo mode. Pages will render but authentication and data features are
+disabled.
+
 ## Getting Started
 
 First, run the development server:
